@@ -1,0 +1,1679 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "secret": "",
+      "external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+      "external_ui_download_detour": "direct",
+      "default_mode": "rule"
+    },
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": false
+    }
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "proxyDns",
+        "address": "tls://8.8.8.8",
+        "detour": "Proxy"
+      },
+      {
+        "tag": "localDns",
+        "address": "https://223.5.5.5/dns-query",
+        "detour": "direct"
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "rule_set": "geosite-category-ads-all",
+        "server": "block"
+      },
+      {
+        "outbound": "any",
+        "server": "localDns",
+        "disable_cache": true
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "global",
+        "server": "proxyDns"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "server": "proxyDns"
+      }
+    ],
+    "final": "localDns",
+    "strategy": "ipv4_only"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "inet4_address": "172.19.0.1/30",
+      "mtu": 9000,
+      "auto_route": true,
+      "strict_route": true,
+      "sniff": true,
+      "endpoint_independent_nat": false,
+      "stack": "system",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
+      }
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
+      "sniff": true,
+      "users": []
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "Proxy",
+      "type": "selector",
+      "outbounds": [
+        "auto",
+        "direct",
+        "🇺🇸 美国 CloudFlare节点",
+        "🇺🇸 美国 CloudFlare节点 2",
+        "🇭🇰 香港+电讯盈科有限公司",
+        "🇺🇸 美国 V2CROSS.COM",
+        "🇺🇸 美国 CloudFlare节点 3",
+        "🇺🇸 美国+华盛顿Cogent通信公司",
+        "🇺🇸 美国 CloudFlare节点 4",
+        "🇺🇸 美国+华盛顿Cogent通信公司 2",
+        "🇨🇳 广东省广州市 移动",
+        "🇺🇸 美国 CloudFlare节点 5",
+        "🇺🇸 美国 CloudFlare节点 6",
+        "🇺🇸 美国 CloudFlare节点 7",
+        "🇺🇸 美国+麻省理工学院",
+        "🇺🇸 美国 CloudFlare节点 8",
+        "🇺🇸 美国科罗拉多州布隆菲尔德市+Level3",
+        "🇺🇸 美国 CloudFlare节点 9",
+        "🇨🇳 北京市+移动",
+        "🇺🇸 美国 CloudFlare节点 10",
+        "🇺🇸 美国 CloudFlare节点 11",
+        "🇺🇸 美国 CloudFlare节点 12",
+        "🇺🇸 美国 CloudFlare节点 13",
+        "🇺🇸 美国 CloudFlare节点 14",
+        "🇺🇸 美国 CloudFlare节点 15",
+        "🇺🇸 美国 CloudFlare节点 16",
+        "🇸🇬 新加坡+V2CROSS.COM",
+        "🇺🇸 美国+华盛顿Cogent通信公司 3",
+        "🇺🇸 美国+华盛顿Cogent通信公司 4",
+        "🇺🇸 美国 CloudFlare节点 17",
+        "🇺🇸 美国 CloudFlare节点 18",
+        "🇰🇷 韩国+首尔Amazon数据中心",
+        "🇺🇸 美国 CloudFlare节点 19",
+        "🇺🇸 美国 CloudFlare节点 20",
+        "🇨🇴 北美地区+V2CROSS.COM",
+        "🇺🇸 美国+CloudFlare节点",
+        "🇺🇸 美国 CloudFlare节点 21",
+        "🇺🇸 美国 CloudFlare公司CDN节点(shopify)",
+        "🇺🇸 美国 Fastly全球Anycast节点",
+        "🇺🇸 美国 CloudFlare节点 22",
+        "🇺🇸 美国 CloudFlare节点 23",
+        "🇺🇸 美国 CloudFlare节点 24",
+        "广东省 移动",
+        "🇫🇷 法国+格拉沃利讷OVH数据中心",
+        "🇭🇰 香港 UCloud",
+        "🇺🇸 美国 CloudFlare节点 25",
+        "🇺🇸 美国+华盛顿Cogent通信公司 5",
+        "🇺🇸 美国+华盛顿Cogent通信公司 6",
+        "🇺🇸 美国+华盛顿Cogent通信公司 7",
+        "🇺🇸 美国 CloudFlare节点 26",
+        "🇺🇸 美国 CloudFlare节点 27",
+        "🇺🇸 美国 CloudFlare节点 28",
+        "🇺🇸 美国 CloudFlare节点 29",
+        "🇺🇸 美国 CloudFlare节点 30",
+        "🇺🇸 美国 CloudFlare节点 31",
+        "🇺🇸 美国 CloudFlare节点 32"
+      ]
+    },
+    {
+      "tag": "OpenAI",
+      "type": "selector",
+      "outbounds": [
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ],
+      "default": "America"
+    },
+    {
+      "tag": "Google",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Telegram",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Twitter",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Facebook",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "BiliBili",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan"
+      ]
+    },
+    {
+      "tag": "Bahamut",
+      "type": "selector",
+      "outbounds": [
+        "TaiWan",
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "Spotify",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ],
+      "default": "America"
+    },
+    {
+      "tag": "TikTok",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America"
+      ],
+      "default": "Japan"
+    },
+    {
+      "tag": "Netflix",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Disney+",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Apple",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Microsoft",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Games",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Streaming",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Global",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others",
+        "direct"
+      ]
+    },
+    {
+      "tag": "China",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "AdBlock",
+      "type": "selector",
+      "outbounds": [
+        "block",
+        "direct"
+      ]
+    },
+    {
+      "tag": "HongKong",
+      "type": "selector",
+      "outbounds": [
+        "🇭🇰 香港+电讯盈科有限公司",
+        "🇭🇰 香港 UCloud"
+      ]
+    },
+    {
+      "tag": "TaiWan",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "Singapore",
+      "type": "selector",
+      "outbounds": [
+        "🇸🇬 新加坡+V2CROSS.COM"
+      ]
+    },
+    {
+      "tag": "Japan",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "America",
+      "type": "selector",
+      "outbounds": [
+        "🇺🇸 美国 CloudFlare节点",
+        "🇺🇸 美国 CloudFlare节点 2",
+        "🇺🇸 美国 V2CROSS.COM",
+        "🇺🇸 美国 CloudFlare节点 3",
+        "🇺🇸 美国+华盛顿Cogent通信公司",
+        "🇺🇸 美国 CloudFlare节点 4",
+        "🇺🇸 美国+华盛顿Cogent通信公司 2",
+        "🇺🇸 美国 CloudFlare节点 5",
+        "🇺🇸 美国 CloudFlare节点 6",
+        "🇺🇸 美国 CloudFlare节点 7",
+        "🇺🇸 美国+麻省理工学院",
+        "🇺🇸 美国 CloudFlare节点 8",
+        "🇺🇸 美国科罗拉多州布隆菲尔德市+Level3",
+        "🇺🇸 美国 CloudFlare节点 9",
+        "🇺🇸 美国 CloudFlare节点 10",
+        "🇺🇸 美国 CloudFlare节点 11",
+        "🇺🇸 美国 CloudFlare节点 12",
+        "🇺🇸 美国 CloudFlare节点 13",
+        "🇺🇸 美国 CloudFlare节点 14",
+        "🇺🇸 美国 CloudFlare节点 15",
+        "🇺🇸 美国 CloudFlare节点 16",
+        "🇺🇸 美国+华盛顿Cogent通信公司 3",
+        "🇺🇸 美国+华盛顿Cogent通信公司 4",
+        "🇺🇸 美国 CloudFlare节点 17",
+        "🇺🇸 美国 CloudFlare节点 18",
+        "🇺🇸 美国 CloudFlare节点 19",
+        "🇺🇸 美国 CloudFlare节点 20",
+        "🇨🇴 北美地区+V2CROSS.COM",
+        "🇺🇸 美国+CloudFlare节点",
+        "🇺🇸 美国 CloudFlare节点 21",
+        "🇺🇸 美国 CloudFlare公司CDN节点(shopify)",
+        "🇺🇸 美国 Fastly全球Anycast节点",
+        "🇺🇸 美国 CloudFlare节点 22",
+        "🇺🇸 美国 CloudFlare节点 23",
+        "🇺🇸 美国 CloudFlare节点 24",
+        "🇺🇸 美国 CloudFlare节点 25",
+        "🇺🇸 美国+华盛顿Cogent通信公司 5",
+        "🇺🇸 美国+华盛顿Cogent通信公司 6",
+        "🇺🇸 美国+华盛顿Cogent通信公司 7",
+        "🇺🇸 美国 CloudFlare节点 26",
+        "🇺🇸 美国 CloudFlare节点 27",
+        "🇺🇸 美国 CloudFlare节点 28",
+        "🇺🇸 美国 CloudFlare节点 29",
+        "🇺🇸 美国 CloudFlare节点 30",
+        "🇺🇸 美国 CloudFlare节点 31",
+        "🇺🇸 美国 CloudFlare节点 32"
+      ]
+    },
+    {
+      "tag": "Others",
+      "type": "selector",
+      "outbounds": [
+        "🇨🇳 广东省广州市 移动",
+        "🇨🇳 北京市+移动",
+        "🇰🇷 韩国+首尔Amazon数据中心",
+        "广东省 移动",
+        "🇫🇷 法国+格拉沃利讷OVH数据中心"
+      ]
+    },
+    {
+      "tag": "auto",
+      "type": "urltest",
+      "outbounds": [
+        "🇺🇸 美国 CloudFlare节点",
+        "🇺🇸 美国 CloudFlare节点 2",
+        "🇭🇰 香港+电讯盈科有限公司",
+        "🇺🇸 美国 V2CROSS.COM",
+        "🇺🇸 美国 CloudFlare节点 3",
+        "🇺🇸 美国+华盛顿Cogent通信公司",
+        "🇺🇸 美国 CloudFlare节点 4",
+        "🇺🇸 美国+华盛顿Cogent通信公司 2",
+        "🇨🇳 广东省广州市 移动",
+        "🇺🇸 美国 CloudFlare节点 5",
+        "🇺🇸 美国 CloudFlare节点 6",
+        "🇺🇸 美国 CloudFlare节点 7",
+        "🇺🇸 美国+麻省理工学院",
+        "🇺🇸 美国 CloudFlare节点 8",
+        "🇺🇸 美国科罗拉多州布隆菲尔德市+Level3",
+        "🇺🇸 美国 CloudFlare节点 9",
+        "🇨🇳 北京市+移动",
+        "🇺🇸 美国 CloudFlare节点 10",
+        "🇺🇸 美国 CloudFlare节点 11",
+        "🇺🇸 美国 CloudFlare节点 12",
+        "🇺🇸 美国 CloudFlare节点 13",
+        "🇺🇸 美国 CloudFlare节点 14",
+        "🇺🇸 美国 CloudFlare节点 15",
+        "🇺🇸 美国 CloudFlare节点 16",
+        "🇸🇬 新加坡+V2CROSS.COM",
+        "🇺🇸 美国+华盛顿Cogent通信公司 3",
+        "🇺🇸 美国+华盛顿Cogent通信公司 4",
+        "🇺🇸 美国 CloudFlare节点 17",
+        "🇺🇸 美国 CloudFlare节点 18",
+        "🇰🇷 韩国+首尔Amazon数据中心",
+        "🇺🇸 美国 CloudFlare节点 19",
+        "🇺🇸 美国 CloudFlare节点 20",
+        "🇨🇴 北美地区+V2CROSS.COM",
+        "🇺🇸 美国+CloudFlare节点",
+        "🇺🇸 美国 CloudFlare节点 21",
+        "🇺🇸 美国 CloudFlare公司CDN节点(shopify)",
+        "🇺🇸 美国 Fastly全球Anycast节点",
+        "🇺🇸 美国 CloudFlare节点 22",
+        "🇺🇸 美国 CloudFlare节点 23",
+        "🇺🇸 美国 CloudFlare节点 24",
+        "广东省 移动",
+        "🇫🇷 法国+格拉沃利讷OVH数据中心",
+        "🇭🇰 香港 UCloud",
+        "🇺🇸 美国 CloudFlare节点 25",
+        "🇺🇸 美国+华盛顿Cogent通信公司 5",
+        "🇺🇸 美国+华盛顿Cogent通信公司 6",
+        "🇺🇸 美国+华盛顿Cogent通信公司 7",
+        "🇺🇸 美国 CloudFlare节点 26",
+        "🇺🇸 美国 CloudFlare节点 27",
+        "🇺🇸 美国 CloudFlare节点 28",
+        "🇺🇸 美国 CloudFlare节点 29",
+        "🇺🇸 美国 CloudFlare节点 30",
+        "🇺🇸 美国 CloudFlare节点 31",
+        "🇺🇸 美国 CloudFlare节点 32"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m",
+      "tolerance": 50
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点",
+      "type": "vmess",
+      "server": "104.19.45.19",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip13.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 2",
+      "type": "vmess",
+      "server": "russia.com",
+      "server_port": 8880,
+      "uuid": "06d65689-a12a-467c-9ff8-0363fe90c0b4",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "sssub.v2.001.ssrsub.com"
+        },
+        "path": "/api/v3/download.getFile"
+      }
+    },
+    {
+      "tag": "🇭🇰 香港+电讯盈科有限公司",
+      "type": "trojan",
+      "server": "112.120.7.41",
+      "server_port": 443,
+      "password": "NUeBvQHox0BmnHpu",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "gnmktnwq58.xyz"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 V2CROSS.COM",
+      "type": "vmess",
+      "server": "155.724064.xyz",
+      "server_port": 443,
+      "uuid": "64917049-d265-477f-a4cf-b5076e746270",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "155.724064.xyz"
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "155.724064.xyz"
+        },
+        "path": "/sbudvws"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 3",
+      "type": "vmess",
+      "server": "104.19.47.77",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip14.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国+华盛顿Cogent通信公司",
+      "type": "shadowsocks",
+      "server": "38.121.43.97",
+      "server_port": 8091,
+      "method": "aes-256-gcm",
+      "password": "PCnnH6SQSnfoS27"
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 4",
+      "type": "vmess",
+      "server": "172.64.233.9",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip2.1457230.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国+华盛顿Cogent通信公司 2",
+      "type": "shadowsocks",
+      "server": "38.68.134.202",
+      "server_port": 8091,
+      "method": "aes-256-gcm",
+      "password": "PCnnH6SQSnfoS27"
+    },
+    {
+      "tag": "🇨🇳 广东省广州市 移动",
+      "type": "vmess",
+      "server": "183.236.51.23",
+      "server_port": 54437,
+      "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+      "security": "auto",
+      "alter_id": 64,
+      "packet_encoding": "xudp"
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 5",
+      "type": "vmess",
+      "server": "172.64.233.24",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip2.1457230.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 6",
+      "type": "vmess",
+      "server": "server31.beheshtbaneh.com",
+      "server_port": 8880,
+      "uuid": "4154143c-bbba-47a4-9f79-c2ed087cbcc9",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "server31.beheshtbaneh.com"
+        },
+        "path": "/"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 7",
+      "type": "vmess",
+      "server": "104.26.7.132",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn1.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国+麻省理工学院",
+      "type": "trojan",
+      "server": "18.142.43.232",
+      "server_port": 16319,
+      "password": "9CWue1ZFJWxx",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "appsvs.shop"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 8",
+      "type": "vmess",
+      "server": "104.26.5.123",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国科罗拉多州布隆菲尔德市+Level3",
+      "type": "shadowsocks",
+      "server": "service.ouluyun9803.com",
+      "server_port": 26667,
+      "method": "chacha20-ietf-poly1305",
+      "password": "d6105bbd-be0d-45b2-82ad-31fd1071c1d2"
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 9",
+      "type": "vmess",
+      "server": "104.19.38.12",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip2.1457230.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇨🇳 北京市+移动",
+      "type": "trojan",
+      "server": "36.134.38.49",
+      "server_port": 51000,
+      "password": "MfqALmAJ",
+      "tls": {
+        "enabled": true,
+        "insecure": true
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 10",
+      "type": "vmess",
+      "server": "104.20.25.146",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn1.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 11",
+      "type": "vmess",
+      "server": "104.19.45.241",
+      "server_port": 2095,
+      "uuid": "7a737f41-b792-4260-94ff-3d864da67b80",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "onea.flha.ru"
+        },
+        "path": "/"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 12",
+      "type": "vmess",
+      "server": "104.17.148.22",
+      "server_port": 2095,
+      "uuid": "8d568a38-ab77-45c8-b3bb-61b57d9e2b35",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "WwW.speedtest.net.kkkkklllkokoWkfwofkfKfekojg.IR.mralpha-vpn.COm"
+        },
+        "path": "/Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit,Telegram-MainSecurit",
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "max_early_data": 2095
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 13",
+      "type": "vmess",
+      "server": "172.64.99.32",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn2.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 14",
+      "type": "vmess",
+      "server": "104.19.47.36",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip2.1457230.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 15",
+      "type": "vmess",
+      "server": "104.26.0.56",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip14.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 16",
+      "type": "vmess",
+      "server": "104.19.42.79",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇸🇬 新加坡+V2CROSS.COM",
+      "type": "shadowsocks",
+      "server": "68.183.176.112",
+      "server_port": 3127,
+      "method": "chacha20-ietf-poly1305",
+      "password": "GY1dECpxXiaqRD0bA7X9Wx"
+    },
+    {
+      "tag": "🇺🇸 美国+华盛顿Cogent通信公司 3",
+      "type": "shadowsocks",
+      "server": "38.114.114.208",
+      "server_port": 5498,
+      "method": "aes-256-gcm",
+      "password": "lGqs95QkFHo2NV"
+    },
+    {
+      "tag": "🇺🇸 美国+华盛顿Cogent通信公司 4",
+      "type": "shadowsocks",
+      "server": "38.86.135.31",
+      "server_port": 5600,
+      "method": "aes-256-gcm",
+      "password": "Y6R9pAtvxxzmGC"
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 17",
+      "type": "vmess",
+      "server": "lol.ps",
+      "server_port": 2052,
+      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "mysan2.jaquay22.workers.dev"
+        },
+        "path": "/afrhms16v.bestxray.buzz/linkws"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 18",
+      "type": "vmess",
+      "server": "104.19.21.71",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip2.1457230.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇰🇷 韩国+首尔Amazon数据中心",
+      "type": "trojan",
+      "server": "15.164.245.6",
+      "server_port": 16333,
+      "password": "0DutyFCckwVS",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "appsvs.shop"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 19",
+      "type": "vmess",
+      "server": "104.19.45.220",
+      "server_port": 2095,
+      "uuid": "7a737f41-b792-4260-94ff-3d864da67b80",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "onea.flha.ru"
+        },
+        "path": "/"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 20",
+      "type": "vmess",
+      "server": "104.19.55.79",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇨🇴 北美地区+V2CROSS.COM",
+      "type": "shadowsocks",
+      "server": "23.157.40.83",
+      "server_port": 9090,
+      "method": "aes-256-gcm",
+      "password": "Y6R9pAtvxxzmGC"
+    },
+    {
+      "tag": "🇺🇸 美国+CloudFlare节点",
+      "type": "trojan",
+      "server": "104.21.47.176",
+      "server_port": 443,
+      "password": "52701795-3c3b-46b4-b7cf-c5978b3a4cf2",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hdfyc1.achaemenidempireofpersia.uk"
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "xw7uebRG4KlUXGGYTVEagC5V7fI"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 21",
+      "type": "vmess",
+      "server": "cfcdn3.sanfencdn9.com",
+      "server_port": 2052,
+      "uuid": "a223af01-b481-4abf-a305-60d60587d1e4",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "wtywwcrzjp5.yofnhkfc.xyz"
+        },
+        "path": "/video/9TfVEyku"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare公司CDN节点(shopify)",
+      "type": "vmess",
+      "server": "23.227.38.5",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip006.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 Fastly全球Anycast节点",
+      "type": "vmess",
+      "server": "gov.uk",
+      "server_port": 443,
+      "uuid": "77848824-93b7-4b89-ffd0-e91afff406ce",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "zheshiscp.com"
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "zheshiscp.com"
+        },
+        "path": "/77848824"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 22",
+      "type": "vmess",
+      "server": "104.19.47.88",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1457230.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 23",
+      "type": "vmess",
+      "server": "104.19.45.35",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip13.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 24",
+      "type": "vmess",
+      "server": "104.19.47.27",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip2.1457230.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "广东省 移动",
+      "type": "vmess",
+      "server": "183.238.202.173",
+      "server_port": 51193,
+      "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+      "security": "auto",
+      "alter_id": 64,
+      "packet_encoding": "xudp"
+    },
+    {
+      "tag": "🇫🇷 法国+格拉沃利讷OVH数据中心",
+      "type": "shadowsocks",
+      "server": "54.36.174.181",
+      "server_port": 5003,
+      "method": "aes-256-gcm",
+      "password": "g5MeD6Ft3CWlJId"
+    },
+    {
+      "tag": "🇭🇰 香港 UCloud",
+      "type": "vmess",
+      "server": "data-us-v1.shwjfkw.cn",
+      "server_port": 20401,
+      "uuid": "b1478e24-4916-3abe-8f17-15931012ecbe",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "data-us-v1.shwjfkw.cn"
+        },
+        "path": "/debian"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 25",
+      "type": "vmess",
+      "server": "104.26.5.66",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国+华盛顿Cogent通信公司 5",
+      "type": "shadowsocks",
+      "server": "38.99.82.85",
+      "server_port": 20002,
+      "method": "chacha20-ietf-poly1305",
+      "password": "̈́m͒ߍM֡Tyۙҫ1͛P̎"
+    },
+    {
+      "tag": "🇺🇸 美国+华盛顿Cogent通信公司 6",
+      "type": "shadowsocks",
+      "server": "38.114.114.207",
+      "server_port": 5000,
+      "method": "aes-256-gcm",
+      "password": "Y6R9pAtvxxzmGC"
+    },
+    {
+      "tag": "🇺🇸 美国+华盛顿Cogent通信公司 7",
+      "type": "shadowsocks",
+      "server": "38.114.114.207",
+      "server_port": 8080,
+      "method": "aes-256-gcm",
+      "password": "KixLvKzwjekG00rm"
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 26",
+      "type": "vmess",
+      "server": "104.19.42.49",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn1.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 27",
+      "type": "vmess",
+      "server": "104.20.17.196",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 28",
+      "type": "vmess",
+      "server": "104.19.45.237",
+      "server_port": 2095,
+      "uuid": "7a737f41-b792-4260-94ff-3d864da67b80",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "onea.flha.ru"
+        },
+        "path": "/"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 29",
+      "type": "vmess",
+      "server": "ip.sb",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 30",
+      "type": "vmess",
+      "server": "104.19.46.59",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip13.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 31",
+      "type": "vmess",
+      "server": "104.26.5.112",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 CloudFlare节点 32",
+      "type": "vmess",
+      "server": "104.17.106.151",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip14.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "final": "Proxy",
+    "rules": [
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "outbound": "dns-out"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "outbound": "AdBlock"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "Proxy"
+      },
+      {
+        "domain": [
+          "clash.razord.top",
+          "yacd.metacubex.one",
+          "yacd.haishan.me",
+          "d.metacubex.one"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-openai",
+        "outbound": "OpenAI"
+      },
+      {
+        "rule_set": [
+          "geosite-youtube",
+          "geoip-google",
+          "geosite-google",
+          "geosite-github"
+        ],
+        "outbound": "Google"
+      },
+      {
+        "rule_set": [
+          "geoip-telegram",
+          "geosite-telegram"
+        ],
+        "outbound": "Telegram"
+      },
+      {
+        "rule_set": [
+          "geoip-twitter",
+          "geosite-twitter"
+        ],
+        "outbound": "Twitter"
+      },
+      {
+        "rule_set": [
+          "geoip-facebook",
+          "geosite-facebook"
+        ],
+        "outbound": "Facebook"
+      },
+      {
+        "rule_set": "geosite-bilibili",
+        "outbound": "BiliBili"
+      },
+      {
+        "rule_set": "geosite-bahamut",
+        "outbound": "Bahamut"
+      },
+      {
+        "rule_set": "geosite-spotify",
+        "outbound": "Spotify"
+      },
+      {
+        "rule_set": "geosite-tiktok",
+        "outbound": "TikTok"
+      },
+      {
+        "rule_set": [
+          "geoip-netflix",
+          "geosite-netflix"
+        ],
+        "outbound": "Netflix"
+      },
+      {
+        "rule_set": "geosite-disney",
+        "outbound": "Disney+"
+      },
+      {
+        "rule_set": [
+          "geoip-apple",
+          "geosite-apple",
+          "geosite-amazon"
+        ],
+        "outbound": "Apple"
+      },
+      {
+        "rule_set": "geosite-microsoft",
+        "outbound": "Microsoft"
+      },
+      {
+        "rule_set": [
+          "geosite-category-games",
+          "geosite-dmm"
+        ],
+        "outbound": "Games"
+      },
+      {
+        "rule_set": [
+          "geosite-hbo",
+          "geosite-primevideo"
+        ],
+        "outbound": "Streaming"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "outbound": "Global"
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "outbound": "China"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-openai",
+        "type": "remote",
+        "format": "source",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Toperlock/sing-box-geosite/main/rule/OpenAI.json",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-youtube",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-github",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-twitter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/twitter.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-twitter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/twitter.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-facebook",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-facebook",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/facebook.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-bahamut",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bahamut.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-spotify",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/spotify.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-tiktok",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-disney",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-amazon",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/amazon.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-microsoft",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-category-games",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-games.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-dmm",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/dmm.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-hbo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hbo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-primevideo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/primevideo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+        "download_detour": "direct"
+      }
+    ]
+  }
+}
