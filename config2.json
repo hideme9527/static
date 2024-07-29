@@ -1,0 +1,4158 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "secret": "",
+      "external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+      "external_ui_download_detour": "direct",
+      "default_mode": "rule"
+    },
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": false
+    }
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "proxyDns",
+        "address": "tls://8.8.8.8",
+        "detour": "Proxy"
+      },
+      {
+        "tag": "localDns",
+        "address": "https://223.5.5.5/dns-query",
+        "detour": "direct"
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "rule_set": "geosite-category-ads-all",
+        "server": "block"
+      },
+      {
+        "outbound": "any",
+        "server": "localDns",
+        "disable_cache": true
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "global",
+        "server": "proxyDns"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "server": "proxyDns"
+      }
+    ],
+    "final": "localDns",
+    "strategy": "ipv4_only"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "inet4_address": "172.19.0.1/30",
+      "mtu": 9000,
+      "auto_route": true,
+      "strict_route": true,
+      "sniff": true,
+      "endpoint_independent_nat": false,
+      "stack": "system",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
+      }
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
+      "sniff": true,
+      "users": []
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "Proxy",
+      "type": "selector",
+      "outbounds": [
+        "auto",
+        "direct",
+        "111",
+        "vmess_01",
+        "vmess_02",
+        "vmess_03",
+        "vmess_04",
+        "vmess_05",
+        "vmess_06",
+        "vmess_07",
+        "vmess_08",
+        "vmess_09",
+        "vmess_010",
+        "vmess_011",
+        "vmess_012",
+        "vmess_013",
+        "vmess_014",
+        "vmess_015",
+        "vmess_016",
+        "vmess_017",
+        "vmess_018",
+        "vmess_019",
+        "vmess_020",
+        "vmess_021",
+        "vmess_022",
+        "vmess_023",
+        "vmess_024",
+        "vmess_025",
+        "vmess_026",
+        "vmess_027",
+        "vmess_028",
+        "vmess_029",
+        "vmess_030",
+        "vmess_031",
+        "vmess_032",
+        "vmess_033",
+        "vmess_034",
+        "vmess_035",
+        "vmess_036",
+        "vmess_037",
+        "vmess_038",
+        "vmess_039",
+        "vmess_040",
+        "vmess_041",
+        "vmess_042",
+        "vmess_043",
+        "vmess_044",
+        "vmess_045",
+        "vmess_046",
+        "vmess_047",
+        "vmess_048",
+        "vmess_049",
+        "vmess_050",
+        "vmess_051",
+        "vmess_052",
+        "vmess_053",
+        "vmess_054",
+        "vmess_055",
+        "vmess_056",
+        "vmess_057",
+        "vmess_058",
+        "vmess_059",
+        "vmess_060",
+        "vmess_061",
+        "vmess_062",
+        "vmess_063",
+        "vmess_064",
+        "vmess_065",
+        "vmess_066",
+        "vmess_067",
+        "vmess_068",
+        "vmess_069",
+        "vmess_070",
+        "vmess_071",
+        "vmess_072",
+        "vmess_073",
+        "vmess_074",
+        "vmess_075",
+        "vmess_076",
+        "vmess_077",
+        "vmess_078",
+        "vmess_079",
+        "vmess_080",
+        "vmess_081",
+        "vmess_082",
+        "vmess_083",
+        "vmess_084",
+        "vmess_085",
+        "vmess_086",
+        "vmess_087",
+        "vmess_088",
+        "vmess_089",
+        "vmess_090",
+        "vmess_091",
+        "vmess_092",
+        "vmess_093",
+        "vmess_094",
+        "vmess_095",
+        "vmess_096",
+        "vmess_097",
+        "vmess_098",
+        "vmess_099",
+        "vmess_0100",
+        "vmess_0101",
+        "vmess_11",
+        "vmess_12",
+        "vmess_13",
+        "vmess_14",
+        "vmess_15",
+        "vmess_16",
+        "vmess_17",
+        "vmess_18",
+        "vmess_19",
+        "vmess_110",
+        "vmess_111",
+        "vmess_112",
+        "vmess_113",
+        "vmess_114",
+        "vmess_115",
+        "vmess_116",
+        "vmess_117",
+        "vmess_118",
+        "vmess_119",
+        "vmess_120",
+        "vmess_121",
+        "vmess_122",
+        "vmess_123",
+        "vmess_124",
+        "vmess_125",
+        "vmess_126",
+        "vmess_127",
+        "vmess_128",
+        "vmess_129",
+        "vmess_130",
+        "vmess_131",
+        "vmess_21",
+        "vmess_22",
+        "vmess_23",
+        "vmess_24",
+        "vmess_31",
+        "vmess_32",
+        "vmess_33",
+        "vmess_34",
+        "vmess_41",
+        "vmess_42",
+        "vmess_43",
+        "vmess_44",
+        "ss_51",
+        "ss_51_shadowtls",
+        "hysteria_61",
+        "hysteria_71",
+        "hysteria_81",
+        "vmess_91",
+        "vmess_92",
+        "vmess_93",
+        "vmess_94",
+        "hysteria_101",
+        "hysteria_111",
+        "vmess_121 2",
+        "vmess_122 2",
+        "vmess_123 2",
+        "vmess_124 2",
+        "vmess_131 2",
+        "vmess_132",
+        "vmess_133",
+        "vmess_134",
+        "vmess_141",
+        "vmess_142",
+        "vmess_143",
+        "vmess_144",
+        "ss_151",
+        "ss_151_shadowtls",
+        "hysteria_0",
+        "hysteria_1",
+        "hysteria_2",
+        "hysteria_3"
+      ]
+    },
+    {
+      "tag": "OpenAI",
+      "type": "selector",
+      "outbounds": [
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ],
+      "default": "America"
+    },
+    {
+      "tag": "Google",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Telegram",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Twitter",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Facebook",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "BiliBili",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan"
+      ]
+    },
+    {
+      "tag": "Bahamut",
+      "type": "selector",
+      "outbounds": [
+        "TaiWan",
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "Spotify",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ],
+      "default": "America"
+    },
+    {
+      "tag": "TikTok",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America"
+      ],
+      "default": "Japan"
+    },
+    {
+      "tag": "Netflix",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Disney+",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Apple",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Microsoft",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Games",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Streaming",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Global",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others",
+        "direct"
+      ]
+    },
+    {
+      "tag": "China",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "AdBlock",
+      "type": "selector",
+      "outbounds": [
+        "block",
+        "direct"
+      ]
+    },
+    {
+      "tag": "HongKong",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "TaiWan",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "Singapore",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "Japan",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "America",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "Others",
+      "type": "selector",
+      "outbounds": [
+        "111",
+        "vmess_01",
+        "vmess_02",
+        "vmess_03",
+        "vmess_04",
+        "vmess_05",
+        "vmess_06",
+        "vmess_07",
+        "vmess_08",
+        "vmess_09",
+        "vmess_010",
+        "vmess_011",
+        "vmess_012",
+        "vmess_013",
+        "vmess_014",
+        "vmess_015",
+        "vmess_016",
+        "vmess_017",
+        "vmess_018",
+        "vmess_019",
+        "vmess_020",
+        "vmess_021",
+        "vmess_022",
+        "vmess_023",
+        "vmess_024",
+        "vmess_025",
+        "vmess_026",
+        "vmess_027",
+        "vmess_028",
+        "vmess_029",
+        "vmess_030",
+        "vmess_031",
+        "vmess_032",
+        "vmess_033",
+        "vmess_034",
+        "vmess_035",
+        "vmess_036",
+        "vmess_037",
+        "vmess_038",
+        "vmess_039",
+        "vmess_040",
+        "vmess_041",
+        "vmess_042",
+        "vmess_043",
+        "vmess_044",
+        "vmess_045",
+        "vmess_046",
+        "vmess_047",
+        "vmess_048",
+        "vmess_049",
+        "vmess_050",
+        "vmess_051",
+        "vmess_052",
+        "vmess_053",
+        "vmess_054",
+        "vmess_055",
+        "vmess_056",
+        "vmess_057",
+        "vmess_058",
+        "vmess_059",
+        "vmess_060",
+        "vmess_061",
+        "vmess_062",
+        "vmess_063",
+        "vmess_064",
+        "vmess_065",
+        "vmess_066",
+        "vmess_067",
+        "vmess_068",
+        "vmess_069",
+        "vmess_070",
+        "vmess_071",
+        "vmess_072",
+        "vmess_073",
+        "vmess_074",
+        "vmess_075",
+        "vmess_076",
+        "vmess_077",
+        "vmess_078",
+        "vmess_079",
+        "vmess_080",
+        "vmess_081",
+        "vmess_082",
+        "vmess_083",
+        "vmess_084",
+        "vmess_085",
+        "vmess_086",
+        "vmess_087",
+        "vmess_088",
+        "vmess_089",
+        "vmess_090",
+        "vmess_091",
+        "vmess_092",
+        "vmess_093",
+        "vmess_094",
+        "vmess_095",
+        "vmess_096",
+        "vmess_097",
+        "vmess_098",
+        "vmess_099",
+        "vmess_0100",
+        "vmess_0101",
+        "vmess_11",
+        "vmess_12",
+        "vmess_13",
+        "vmess_14",
+        "vmess_15",
+        "vmess_16",
+        "vmess_17",
+        "vmess_18",
+        "vmess_19",
+        "vmess_110",
+        "vmess_111",
+        "vmess_112",
+        "vmess_113",
+        "vmess_114",
+        "vmess_115",
+        "vmess_116",
+        "vmess_117",
+        "vmess_118",
+        "vmess_119",
+        "vmess_120",
+        "vmess_121",
+        "vmess_122",
+        "vmess_123",
+        "vmess_124",
+        "vmess_125",
+        "vmess_126",
+        "vmess_127",
+        "vmess_128",
+        "vmess_129",
+        "vmess_130",
+        "vmess_131",
+        "vmess_21",
+        "vmess_22",
+        "vmess_23",
+        "vmess_24",
+        "vmess_31",
+        "vmess_32",
+        "vmess_33",
+        "vmess_34",
+        "vmess_41",
+        "vmess_42",
+        "vmess_43",
+        "vmess_44",
+        "ss_51",
+        "ss_51_shadowtls",
+        "hysteria_61",
+        "hysteria_71",
+        "hysteria_81",
+        "vmess_91",
+        "vmess_92",
+        "vmess_93",
+        "vmess_94",
+        "hysteria_101",
+        "hysteria_111",
+        "vmess_121 2",
+        "vmess_122 2",
+        "vmess_123 2",
+        "vmess_124 2",
+        "vmess_131 2",
+        "vmess_132",
+        "vmess_133",
+        "vmess_134",
+        "vmess_141",
+        "vmess_142",
+        "vmess_143",
+        "vmess_144",
+        "ss_151",
+        "ss_151_shadowtls",
+        "hysteria_0",
+        "hysteria_1",
+        "hysteria_2",
+        "hysteria_3"
+      ]
+    },
+    {
+      "tag": "auto",
+      "type": "urltest",
+      "outbounds": [
+        "111",
+        "vmess_01",
+        "vmess_02",
+        "vmess_03",
+        "vmess_04",
+        "vmess_05",
+        "vmess_06",
+        "vmess_07",
+        "vmess_08",
+        "vmess_09",
+        "vmess_010",
+        "vmess_011",
+        "vmess_012",
+        "vmess_013",
+        "vmess_014",
+        "vmess_015",
+        "vmess_016",
+        "vmess_017",
+        "vmess_018",
+        "vmess_019",
+        "vmess_020",
+        "vmess_021",
+        "vmess_022",
+        "vmess_023",
+        "vmess_024",
+        "vmess_025",
+        "vmess_026",
+        "vmess_027",
+        "vmess_028",
+        "vmess_029",
+        "vmess_030",
+        "vmess_031",
+        "vmess_032",
+        "vmess_033",
+        "vmess_034",
+        "vmess_035",
+        "vmess_036",
+        "vmess_037",
+        "vmess_038",
+        "vmess_039",
+        "vmess_040",
+        "vmess_041",
+        "vmess_042",
+        "vmess_043",
+        "vmess_044",
+        "vmess_045",
+        "vmess_046",
+        "vmess_047",
+        "vmess_048",
+        "vmess_049",
+        "vmess_050",
+        "vmess_051",
+        "vmess_052",
+        "vmess_053",
+        "vmess_054",
+        "vmess_055",
+        "vmess_056",
+        "vmess_057",
+        "vmess_058",
+        "vmess_059",
+        "vmess_060",
+        "vmess_061",
+        "vmess_062",
+        "vmess_063",
+        "vmess_064",
+        "vmess_065",
+        "vmess_066",
+        "vmess_067",
+        "vmess_068",
+        "vmess_069",
+        "vmess_070",
+        "vmess_071",
+        "vmess_072",
+        "vmess_073",
+        "vmess_074",
+        "vmess_075",
+        "vmess_076",
+        "vmess_077",
+        "vmess_078",
+        "vmess_079",
+        "vmess_080",
+        "vmess_081",
+        "vmess_082",
+        "vmess_083",
+        "vmess_084",
+        "vmess_085",
+        "vmess_086",
+        "vmess_087",
+        "vmess_088",
+        "vmess_089",
+        "vmess_090",
+        "vmess_091",
+        "vmess_092",
+        "vmess_093",
+        "vmess_094",
+        "vmess_095",
+        "vmess_096",
+        "vmess_097",
+        "vmess_098",
+        "vmess_099",
+        "vmess_0100",
+        "vmess_0101",
+        "vmess_11",
+        "vmess_12",
+        "vmess_13",
+        "vmess_14",
+        "vmess_15",
+        "vmess_16",
+        "vmess_17",
+        "vmess_18",
+        "vmess_19",
+        "vmess_110",
+        "vmess_111",
+        "vmess_112",
+        "vmess_113",
+        "vmess_114",
+        "vmess_115",
+        "vmess_116",
+        "vmess_117",
+        "vmess_118",
+        "vmess_119",
+        "vmess_120",
+        "vmess_121",
+        "vmess_122",
+        "vmess_123",
+        "vmess_124",
+        "vmess_125",
+        "vmess_126",
+        "vmess_127",
+        "vmess_128",
+        "vmess_129",
+        "vmess_130",
+        "vmess_131",
+        "vmess_21",
+        "vmess_22",
+        "vmess_23",
+        "vmess_24",
+        "vmess_31",
+        "vmess_32",
+        "vmess_33",
+        "vmess_34",
+        "vmess_41",
+        "vmess_42",
+        "vmess_43",
+        "vmess_44",
+        "ss_51",
+        "ss_51_shadowtls",
+        "hysteria_61",
+        "hysteria_71",
+        "hysteria_81",
+        "vmess_91",
+        "vmess_92",
+        "vmess_93",
+        "vmess_94",
+        "hysteria_101",
+        "hysteria_111",
+        "vmess_121 2",
+        "vmess_122 2",
+        "vmess_123 2",
+        "vmess_124 2",
+        "vmess_131 2",
+        "vmess_132",
+        "vmess_133",
+        "vmess_134",
+        "vmess_141",
+        "vmess_142",
+        "vmess_143",
+        "vmess_144",
+        "ss_151",
+        "ss_151_shadowtls",
+        "hysteria_0",
+        "hysteria_1",
+        "hysteria_2",
+        "hysteria_3"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m",
+      "tolerance": 50
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "tag": "111",
+      "type": "trojan",
+      "server": "127.0.0.1",
+      "server_port": 9090,
+      "password": "72ac875a-f5b9-461e-a7a4-942b468b0d83",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "gw.alicdn.com"
+      }
+    },
+    {
+      "tag": "vmess_01",
+      "type": "vmess",
+      "server": "104.19.38.8",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_02",
+      "type": "vmess",
+      "server": "104.26.0.56",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_03",
+      "type": "vmess",
+      "server": "23.227.38.3",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_04",
+      "type": "vmess",
+      "server": "104.19.38.12",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_05",
+      "type": "vmess",
+      "server": "172.64.175.88",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_06",
+      "type": "vmess",
+      "server": "172.64.99.22",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_07",
+      "type": "vmess",
+      "server": "104.19.21.71",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_08",
+      "type": "vmess",
+      "server": "172.64.175.213",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_09",
+      "type": "vmess",
+      "server": "172.64.198.249",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_010",
+      "type": "vmess",
+      "server": "172.64.194.76",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_011",
+      "type": "vmess",
+      "server": "104.19.21.63",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_012",
+      "type": "vmess",
+      "server": "104.19.123.11",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_013",
+      "type": "vmess",
+      "server": "104.18.57.111",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_014",
+      "type": "vmess",
+      "server": "104.19.21.230",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_015",
+      "type": "vmess",
+      "server": "104.19.21.230",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_016",
+      "type": "vmess",
+      "server": "104.19.46.103",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_017",
+      "type": "vmess",
+      "server": "104.19.32.216",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_018",
+      "type": "vmess",
+      "server": "104.19.47.65",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_019",
+      "type": "vmess",
+      "server": "104.19.58.175",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_020",
+      "type": "vmess",
+      "server": "104.19.55.49",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_021",
+      "type": "vmess",
+      "server": "104.19.42.49",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_022",
+      "type": "vmess",
+      "server": "104.17.106.151",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_023",
+      "type": "vmess",
+      "server": "104.19.57.4",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_024",
+      "type": "vmess",
+      "server": "104.19.59.89",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_025",
+      "type": "vmess",
+      "server": "104.20.17.186",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_026",
+      "type": "vmess",
+      "server": "104.20.25.146",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_027",
+      "type": "vmess",
+      "server": "104.20.25.146",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_028",
+      "type": "vmess",
+      "server": "104.26.7.132",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_029",
+      "type": "vmess",
+      "server": "104.20.25.146",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_030",
+      "type": "vmess",
+      "server": "104.20.17.186",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_031",
+      "type": "vmess",
+      "server": "104.19.45.11",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_032",
+      "type": "vmess",
+      "server": "104.19.45.13",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_033",
+      "type": "vmess",
+      "server": "104.19.45.15",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_034",
+      "type": "vmess",
+      "server": "104.19.45.17",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_035",
+      "type": "vmess",
+      "server": "104.19.45.19",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_036",
+      "type": "vmess",
+      "server": "104.19.45.31",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_037",
+      "type": "vmess",
+      "server": "104.19.45.35",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_038",
+      "type": "vmess",
+      "server": "104.19.45.42",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_039",
+      "type": "vmess",
+      "server": "104.19.45.47",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_040",
+      "type": "vmess",
+      "server": "104.19.45.50",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_041",
+      "type": "vmess",
+      "server": "104.19.45.90",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_042",
+      "type": "vmess",
+      "server": "104.26.5.56",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_043",
+      "type": "vmess",
+      "server": "104.26.5.66",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_044",
+      "type": "vmess",
+      "server": "104.26.5.67",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_045",
+      "type": "vmess",
+      "server": "104.26.5.88",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_046",
+      "type": "vmess",
+      "server": "104.26.5.90",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_047",
+      "type": "vmess",
+      "server": "104.26.5.103",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_048",
+      "type": "vmess",
+      "server": "104.26.5.112",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_049",
+      "type": "vmess",
+      "server": "104.26.5.113",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_050",
+      "type": "vmess",
+      "server": "104.26.5.123",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_051",
+      "type": "vmess",
+      "server": "104.26.5.145",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_052",
+      "type": "vmess",
+      "server": "162.159.140.19",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_053",
+      "type": "vmess",
+      "server": "162.159.140.33",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_054",
+      "type": "vmess",
+      "server": "162.159.140.39",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_055",
+      "type": "vmess",
+      "server": "162.159.140.45",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_056",
+      "type": "vmess",
+      "server": "162.159.140.56",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_057",
+      "type": "vmess",
+      "server": "162.159.140.66",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_058",
+      "type": "vmess",
+      "server": "162.159.140.77",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_059",
+      "type": "vmess",
+      "server": "162.159.140.89",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_060",
+      "type": "vmess",
+      "server": "162.159.140.91",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_061",
+      "type": "vmess",
+      "server": "162.159.140.93",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_062",
+      "type": "vmess",
+      "server": "172.64.167.5",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_063",
+      "type": "vmess",
+      "server": "172.64.167.8",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_064",
+      "type": "vmess",
+      "server": "172.64.167.10",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_065",
+      "type": "vmess",
+      "server": "172.64.167.15",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_066",
+      "type": "vmess",
+      "server": "172.64.167.19",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_067",
+      "type": "vmess",
+      "server": "172.64.167.22",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_068",
+      "type": "vmess",
+      "server": "172.64.167.25",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_069",
+      "type": "vmess",
+      "server": "172.64.167.29",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_070",
+      "type": "vmess",
+      "server": "172.64.167.35",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_071",
+      "type": "vmess",
+      "server": "172.64.167.44",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_072",
+      "type": "vmess",
+      "server": "172.64.233.7",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_073",
+      "type": "vmess",
+      "server": "172.64.233.9",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_074",
+      "type": "vmess",
+      "server": "172.64.233.15",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_075",
+      "type": "vmess",
+      "server": "172.64.233.17",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_076",
+      "type": "vmess",
+      "server": "172.64.233.24",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_077",
+      "type": "vmess",
+      "server": "172.64.233.27",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_078",
+      "type": "vmess",
+      "server": "172.64.233.32",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_079",
+      "type": "vmess",
+      "server": "172.64.233.35",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_080",
+      "type": "vmess",
+      "server": "172.64.233.37",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_081",
+      "type": "vmess",
+      "server": "172.64.233.43",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_082",
+      "type": "vmess",
+      "server": "172.64.166.2",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_083",
+      "type": "vmess",
+      "server": "172.64.166.8",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_084",
+      "type": "vmess",
+      "server": "172.64.166.9",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_085",
+      "type": "vmess",
+      "server": "172.64.166.12",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_086",
+      "type": "vmess",
+      "server": "172.64.166.16",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_087",
+      "type": "vmess",
+      "server": "172.64.166.20",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_088",
+      "type": "vmess",
+      "server": "172.64.166.22",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_089",
+      "type": "vmess",
+      "server": "172.64.166.28",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_090",
+      "type": "vmess",
+      "server": "172.64.166.32",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_091",
+      "type": "vmess",
+      "server": "172.64.166.33",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_092",
+      "type": "vmess",
+      "server": "fbi.gov",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_093",
+      "type": "vmess",
+      "server": "shopify.com",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_094",
+      "type": "vmess",
+      "server": "icook.tw",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_095",
+      "type": "vmess",
+      "server": "ip.sb",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_096",
+      "type": "vmess",
+      "server": "japan.com",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_097",
+      "type": "vmess",
+      "server": "malaysia.com",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_098",
+      "type": "vmess",
+      "server": "russia.com",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_099",
+      "type": "vmess",
+      "server": "singapore.com",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_0100",
+      "type": "vmess",
+      "server": "skk.moe",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_0101",
+      "type": "vmess",
+      "server": "www.visa.com",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip1.1789034.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_11",
+      "type": "vmess",
+      "server": "104.19.38.18",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_12",
+      "type": "vmess",
+      "server": "104.26.0.66",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_13",
+      "type": "vmess",
+      "server": "23.227.38.13",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_14",
+      "type": "vmess",
+      "server": "104.19.38.22",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_15",
+      "type": "vmess",
+      "server": "172.64.175.98",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_16",
+      "type": "vmess",
+      "server": "172.64.99.32",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_17",
+      "type": "vmess",
+      "server": "104.19.21.81",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_18",
+      "type": "vmess",
+      "server": "172.64.175.223",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_19",
+      "type": "vmess",
+      "server": "172.64.198.229",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_110",
+      "type": "vmess",
+      "server": "172.64.194.96",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_111",
+      "type": "vmess",
+      "server": "104.19.21.73",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_112",
+      "type": "vmess",
+      "server": "104.19.123.31",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_113",
+      "type": "vmess",
+      "server": "104.18.57.121",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_114",
+      "type": "vmess",
+      "server": "104.19.21.240",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_115",
+      "type": "vmess",
+      "server": "104.19.21.220",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_116",
+      "type": "vmess",
+      "server": "104.19.46.123",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_117",
+      "type": "vmess",
+      "server": "104.19.32.226",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_118",
+      "type": "vmess",
+      "server": "104.19.47.75",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_119",
+      "type": "vmess",
+      "server": "104.19.58.185",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_120",
+      "type": "vmess",
+      "server": "104.19.55.79",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_121",
+      "type": "vmess",
+      "server": "104.19.42.79",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_122",
+      "type": "vmess",
+      "server": "104.17.106.171",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_123",
+      "type": "vmess",
+      "server": "104.19.57.24",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_124",
+      "type": "vmess",
+      "server": "104.19.59.99",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_125",
+      "type": "vmess",
+      "server": "104.20.17.196",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_126",
+      "type": "vmess",
+      "server": "104.20.25.166",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_127",
+      "type": "vmess",
+      "server": "104.20.25.176",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_128",
+      "type": "vmess",
+      "server": "104.26.7.152",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_129",
+      "type": "vmess",
+      "server": "104.20.25.166",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_130",
+      "type": "vmess",
+      "server": "104.20.17.196",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_131",
+      "type": "vmess",
+      "server": "172.67.74.122",
+      "server_port": 2052,
+      "uuid": "d6b6d982-d52f-465a-b988-85670b23f64a",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "cdn3.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_21",
+      "type": "vmess",
+      "server": "104.19.51.232",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip006.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_22",
+      "type": "vmess",
+      "server": "23.227.38.5",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip006.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_23",
+      "type": "vmess",
+      "server": "104.16.148.244",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip006.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_24",
+      "type": "vmess",
+      "server": "104.19.38.62",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip006.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_31",
+      "type": "vmess",
+      "server": "104.19.32.46",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip006.3196772.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_32",
+      "type": "vmess",
+      "server": "23.227.38.6",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip006.3196772.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_33",
+      "type": "vmess",
+      "server": "104.19.51.232",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip006.3196772.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_34",
+      "type": "vmess",
+      "server": "104.19.38.62",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip006.3196772.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_41",
+      "type": "vmess",
+      "server": "104.19.46.233",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip005.3196772.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_42",
+      "type": "vmess",
+      "server": "23.227.38.6",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip005.3196772.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_43",
+      "type": "vmess",
+      "server": "104.19.51.232",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip005.3196772.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_44",
+      "type": "vmess",
+      "server": "104.19.38.62",
+      "server_port": 2086,
+      "uuid": "29eebb60-b27b-4a9d-bba5-947763d9205e",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip005.3196772.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "ss_51",
+      "type": "shadowsocks",
+      "method": "2022-blake3-chacha20-poly1305",
+      "password": "CmUP/cj9LY2W4bsBUV7mG8ujmMcCOzt+b4un9xnLuro=",
+      "detour": "ss_51_shadowtls"
+    },
+    {
+      "tag": "ss_51_shadowtls",
+      "type": "shadowtls",
+      "server": "23.170.40.77",
+      "server_port": 443,
+      "version": 3,
+      "password": "K+NtA/8R8MTQ9vyZAd0kzUYJkwQmQBkUIQmwa2Po8cM=",
+      "tls": {
+        "enabled": true,
+        "server_name": "nijigen-works.jp"
+      }
+    },
+    {
+      "tag": "hysteria_61",
+      "type": "hysteria",
+      "server": "hy2.dtku47.xyz",
+      "server_port": 15566,
+      "up_mbps": 50,
+      "down_mbps": 100,
+      "auth_str": "jQrGpwSqp34P",
+      "tls": {
+        "enabled": true,
+        "server_name": "",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "hysteria_71",
+      "type": "hysteria",
+      "server": "clash1.dtku47.xyz",
+      "server_port": 11223,
+      "up_mbps": 50,
+      "down_mbps": 100,
+      "auth_str": "O5tQQiW2xKf5",
+      "tls": {
+        "enabled": true,
+        "server_name": "",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "hysteria_81",
+      "type": "hysteria",
+      "server": "hy2.dtku47.xyz",
+      "server_port": 15566,
+      "up_mbps": 50,
+      "down_mbps": 100,
+      "auth_str": "jQrGpwSqp34P",
+      "tls": {
+        "enabled": true,
+        "server_name": "",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "vmess_91",
+      "type": "vmess",
+      "server": "104.26.9.22",
+      "server_port": 8080,
+      "uuid": "ef8c954e-014f-4b36-8273-9b5086afab34",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "ef8c954e-014f-4b36-8273-9b5086afab34-vm"
+      }
+    },
+    {
+      "tag": "vmess_92",
+      "type": "vmess",
+      "server": "172.64.97.235",
+      "server_port": 8080,
+      "uuid": "ef8c954e-014f-4b36-8273-9b5086afab34",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "ef8c954e-014f-4b36-8273-9b5086afab34-vm"
+      }
+    },
+    {
+      "tag": "vmess_93",
+      "type": "vmess",
+      "server": "104.19.38.28",
+      "server_port": 8080,
+      "uuid": "ef8c954e-014f-4b36-8273-9b5086afab34",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "ef8c954e-014f-4b36-8273-9b5086afab34-vm"
+      }
+    },
+    {
+      "tag": "vmess_94",
+      "type": "vmess",
+      "server": "104.19.38.48",
+      "server_port": 8080,
+      "uuid": "ef8c954e-014f-4b36-8273-9b5086afab34",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "ef8c954e-014f-4b36-8273-9b5086afab34-vm"
+      }
+    },
+    {
+      "tag": "hysteria_101",
+      "type": "hysteria",
+      "server": "hy2.dtku47.xyz",
+      "server_port": 15566,
+      "up_mbps": 50,
+      "down_mbps": 100,
+      "auth_str": "jQrGpwSqp34P",
+      "tls": {
+        "enabled": true,
+        "server_name": "",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "hysteria_111",
+      "type": "hysteria",
+      "server": "hy1.dtku47.xyz",
+      "server_port": 22334,
+      "up_mbps": 50,
+      "down_mbps": 100,
+      "auth_str": "lASdKzWK0VxL",
+      "tls": {
+        "enabled": true,
+        "server_name": "",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "vmess_121 2",
+      "type": "vmess",
+      "server": "104.19.32.88",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_122 2",
+      "type": "vmess",
+      "server": "23.227.38.8",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_123 2",
+      "type": "vmess",
+      "server": "104.26.0.50",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_124 2",
+      "type": "vmess",
+      "server": "104.19.38.88",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_131 2",
+      "type": "vmess",
+      "server": "104.19.32.88",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_132",
+      "type": "vmess",
+      "server": "23.227.38.8",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_133",
+      "type": "vmess",
+      "server": "104.26.0.50",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_134",
+      "type": "vmess",
+      "server": "104.19.38.88",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_141",
+      "type": "vmess",
+      "server": "104.19.32.88",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_142",
+      "type": "vmess",
+      "server": "23.227.38.8",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_143",
+      "type": "vmess",
+      "server": "104.26.0.50",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "vmess_144",
+      "type": "vmess",
+      "server": "104.19.38.88",
+      "server_port": 2086,
+      "uuid": "e9e3cc13-db48-4cc1-8c24-7626439a5339",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "ip5-10.freegradely.xyz"
+        },
+        "path": "github.com/Alvin9999"
+      }
+    },
+    {
+      "tag": "ss_151",
+      "type": "shadowsocks",
+      "method": "2022-blake3-chacha20-poly1305",
+      "password": "6qfEwR4QOrHq+k3csNdEZgMa+Y890g/eouGnVEtxb0c=",
+      "detour": "ss_151_shadowtls"
+    },
+    {
+      "tag": "ss_151_shadowtls",
+      "type": "shadowtls",
+      "server": "www2.dtku44.xyz",
+      "server_port": 443,
+      "version": 3,
+      "password": "LdjpJtNZK+2WhXfRY+FxR9sokcOYoddKAx8dN7q8FOI=",
+      "tls": {
+        "enabled": true,
+        "server_name": "nijigen-works.jp"
+      }
+    },
+    {
+      "tag": "hysteria_0",
+      "type": "hysteria",
+      "server": "38.135.52.192",
+      "server_port": 23456,
+      "up_mbps": 80,
+      "down_mbps": 100,
+      "auth_str": "dongtaiwang.com",
+      "tls": {
+        "enabled": true,
+        "server_name": "bing.com",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "hysteria_1",
+      "type": "hysteria",
+      "server": "38.135.52.192",
+      "server_port": 23456,
+      "up_mbps": 80,
+      "down_mbps": 100,
+      "auth_str": "dongtaiwang.com",
+      "tls": {
+        "enabled": true,
+        "server_name": "bing.com",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "hysteria_2",
+      "type": "hysteria",
+      "server": "38.135.52.192",
+      "server_port": 23456,
+      "up_mbps": 80,
+      "down_mbps": 100,
+      "auth_str": "dongtaiwang.com",
+      "tls": {
+        "enabled": true,
+        "server_name": "bing.com",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "hysteria_3",
+      "type": "hysteria",
+      "server": "38.135.52.192",
+      "server_port": 23456,
+      "up_mbps": 80,
+      "down_mbps": 100,
+      "auth_str": "dongtaiwang.com",
+      "tls": {
+        "enabled": true,
+        "server_name": "bing.com",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "final": "Proxy",
+    "rules": [
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "outbound": "dns-out"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "outbound": "AdBlock"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "Proxy"
+      },
+      {
+        "domain": [
+          "clash.razord.top",
+          "yacd.metacubex.one",
+          "yacd.haishan.me",
+          "d.metacubex.one"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-openai",
+        "outbound": "OpenAI"
+      },
+      {
+        "rule_set": [
+          "geosite-youtube",
+          "geoip-google",
+          "geosite-google",
+          "geosite-github"
+        ],
+        "outbound": "Google"
+      },
+      {
+        "rule_set": [
+          "geoip-telegram",
+          "geosite-telegram"
+        ],
+        "outbound": "Telegram"
+      },
+      {
+        "rule_set": [
+          "geoip-twitter",
+          "geosite-twitter"
+        ],
+        "outbound": "Twitter"
+      },
+      {
+        "rule_set": [
+          "geoip-facebook",
+          "geosite-facebook"
+        ],
+        "outbound": "Facebook"
+      },
+      {
+        "rule_set": "geosite-bilibili",
+        "outbound": "BiliBili"
+      },
+      {
+        "rule_set": "geosite-bahamut",
+        "outbound": "Bahamut"
+      },
+      {
+        "rule_set": "geosite-spotify",
+        "outbound": "Spotify"
+      },
+      {
+        "rule_set": "geosite-tiktok",
+        "outbound": "TikTok"
+      },
+      {
+        "rule_set": [
+          "geoip-netflix",
+          "geosite-netflix"
+        ],
+        "outbound": "Netflix"
+      },
+      {
+        "rule_set": "geosite-disney",
+        "outbound": "Disney+"
+      },
+      {
+        "rule_set": [
+          "geoip-apple",
+          "geosite-apple",
+          "geosite-amazon"
+        ],
+        "outbound": "Apple"
+      },
+      {
+        "rule_set": "geosite-microsoft",
+        "outbound": "Microsoft"
+      },
+      {
+        "rule_set": [
+          "geosite-category-games",
+          "geosite-dmm"
+        ],
+        "outbound": "Games"
+      },
+      {
+        "rule_set": [
+          "geosite-hbo",
+          "geosite-primevideo"
+        ],
+        "outbound": "Streaming"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "outbound": "Global"
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "outbound": "China"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-openai",
+        "type": "remote",
+        "format": "source",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Toperlock/sing-box-geosite/main/rule/OpenAI.json",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-youtube",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-github",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-twitter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/twitter.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-twitter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/twitter.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-facebook",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-facebook",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/facebook.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-bahamut",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bahamut.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-spotify",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/spotify.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-tiktok",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-disney",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-amazon",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/amazon.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-microsoft",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-category-games",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-games.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-dmm",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/dmm.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-hbo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hbo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-primevideo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/primevideo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+        "download_detour": "direct"
+      }
+    ]
+  }
+}
